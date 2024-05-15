@@ -2,6 +2,7 @@ import { puzzle } from './puzzle'
 import { useState, useEffect } from 'react'
 import { CEL } from './cel'
 import { useSpring, useSprings, animated } from '@react-spring/web'
+// @ts-ignore
 import useSound from 'use-sound';
 
 
