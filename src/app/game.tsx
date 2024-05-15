@@ -196,17 +196,18 @@ export function Game({ sideLength }: GameProps) {
         })
     }
 
-    const handleMouseUp = () => {
-        console.log('mouse up')
-        setDragInProgress(false)
-        if (path.length > 0 && dragInProgress) {
-            handleSubmit();
-        }
-    }
+
 
     useEffect(() => {
+        const handleMouseUp = () => {
+            setDragInProgress(false)
+            if (path.length > 0 && dragInProgress) {
+                handleSubmit();
+            }
+        }
         document.addEventListener('mouseup', handleMouseUp);
 
+        // @ts-ignore
         function preventBehavior(e) {
             e.preventDefault();
         };
@@ -216,7 +217,7 @@ export function Game({ sideLength }: GameProps) {
         return () => {
             document.removeEventListener('mouseup', handleMouseUp);
         };
-    }, [handleMouseUp]);
+    });
 
 
 
@@ -342,7 +343,7 @@ export function Game({ sideLength }: GameProps) {
         <div className=' w-full flex'>
             <div className='grow'></div>
             <div>
-                <button style={{backgroundColor: TAN, clipPath: `inset(0px ${((hintWordsRemaining/3))*100}% 0px 0px)`, transition: 'clip-path 100ms'}} className={`absolute border border-black border-[3px] py-3 px-[40px] rounded-full font-bold text-2xl text-black`}>Hint</button>
+                <button style={{ backgroundColor: TAN, clipPath: `inset(0px ${((hintWordsRemaining / 3)) * 100}% 0px 0px)`, transition: 'clip-path 100ms' }} className={`absolute border border-black border-[3px] py-3 px-[40px] rounded-full font-bold text-2xl text-black`}>Hint</button>
                 <button className=' border border-[#CFCFCF] border-[3px] py-3 px-[40px] rounded-full font-bold text-2xl text-[#CFCFCF]'>Hint</button>
             </div>
             <div className='grow'></div>
